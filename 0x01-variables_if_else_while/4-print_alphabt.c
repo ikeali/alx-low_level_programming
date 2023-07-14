@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdio.h>
 /**
-* main-Prints an alphabet 
+* main-Prints an alphabet
 * Return:Always (Success)
 *
 */
