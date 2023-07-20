@@ -13,7 +13,7 @@
 
 	int largest;
 
-	if (a >= b && b >= c)
+	if (a >= b && a >= c)
 	{
 	largest = a;
 	}
