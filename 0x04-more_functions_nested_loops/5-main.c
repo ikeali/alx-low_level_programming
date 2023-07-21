@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "5-more_numbers.h"
 /**
  * main - check the code
  *
@@ -7,6 +7,6 @@
  */
 	int main(void)
 	{
-	print_more_numbers();
+	more_numbers();
 	return (0);
 	}
