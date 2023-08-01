@@ -1,3 +1,4 @@
+#include "main.h"
 #include <unistd.h>
 /**
  * _putcha - writes the character c to stdout
