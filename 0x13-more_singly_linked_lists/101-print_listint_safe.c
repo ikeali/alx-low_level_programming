@@ -1,82 +1,29 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - prints all the elements of a linked list
- * @head: head of the list
+ * print_listint_safe - prints a linked list, safely
+ * @head: list of type listint_t to print
  *
- * Return: the number of nodes
+ * Return: number of nodes in the list
  */
+size_t print_listint_safe(const listint_t *head)
+{
+	size_t num = 0;
+	long int diff;
 
-
-	size_t print_listint_safe(const listint_t *head)
+	while (head)
 	{
-	const listint_t *cursor = head;
-	listint_t **ptrs;
-	unsigned int list_len = listint_len(head);
-	size_t count = 0;
-
-	  size_t listint_len(const listint_t *h);
-        int check_ptr(const listint_t *ptr, listint_t **array, unsigned int size);
-
-	ptrs = malloc(sizeof(listint_t *) * list_len);
-	if (ptrs == NULL)
-	exit(98);
-
-	while (cursor != NULL)
-	{
-	if (check_ptr(cursor, ptrs, count) == 0)
-	{
-	printf("[%p] %d\n", (void *)cursor, cursor->n);
-	ptrs[count] = (listint_t *)cursor;
-	}
-	else
-	{
-	printf("-> [%p] %d\n", (void *)cursor, cursor->n);
-	break;
-	}
-	count += 1;
-	cursor = cursor->next;
+		diff = head - head->next;
+		num++;
+		printf("[%p] %d\n", (void *)head, head->n);
+		if (diff > 0)
+			head = head->next;
+		else
+		{
+			printf("-> [%p] %d\n", (void *)head->next, head->next->n);
+			break;
+		}
 	}
 
-	free(ptrs);
-	return count;
-	}
-
-/**
- * listint_len - counts the number of nodes in a linked list
- * @h: head of the list
- *
- * Return: the number of elements
- */
-	size_t listint_len(const listint_t *h)
-	{
-	const listint_t *cursor = h;
-	size_t count = 0;
-
-	while (cursor != NULL)
-	{
-	count += 1;
-	cursor = cursor->next;
-	}
-	return count;
-	}
-
-/**
- * check_ptr - checks if a pointer is in an array
- * @ptr: pointer to be checked
- * @array: array to be checked in
- * @size: size of the array
- *
- * Return: 1 on success, 0 on fail
- */
-	int check_ptr(const listint_t *ptr, listint_t **array, unsigned int size)
-	{
-	while (size > 0)
-	{
-	if (ptr == array[size - 1])
-	return 1;
-	size--;
-	}
-	return 0;
-	}
-
+	return (num);
+}
